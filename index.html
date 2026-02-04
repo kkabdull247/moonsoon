@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONSOON | Signature Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #c5a059; --dark: #0a0a0a; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--dark); color: #fff; scroll-behavior: smooth; }
+        h1, h2, .navbar-brand { font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 3px; }
+        
+        .navbar { background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 20px 0; }
+        .nav-link { color: #fff !important; font-weight: 300; margin: 0 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .nav-link:hover { color: var(--gold) !important; }
+
+        .hero-slider { position: relative; height: 100vh; width: 100%; overflow: hidden; }
+        .carousel-item { height: 100vh; background: no-repeat center center scroll; background-size: cover; }
+        .carousel-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); }
+
+        .hero-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 10; text-align: center; width: 100%;
+        }
+
+        /* Buttons & Cards */
+        .btn-luxury { border: 1px solid var(--gold); color: var(--gold); border-radius: 0; padding: 12px 35px; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; background: transparent; text-decoration: none; display: inline-block; }
+        .btn-luxury:hover { background: var(--gold); color: #000; }
+        
+        .card { background: #111; border: 1px solid #222; border-radius: 0; transition: 0.4s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card-img-top { height: 350px; object-fit: cover; }
+
+        section { padding: 100px 0; }
+        .bg-accent { background-color: #0f0f0f; }
+        
+        /* Visibility fix: Making sure text is white or gold, not gray */
+        p, .text-muted, li { color: #ffffff !important; } 
+        .text-gold { color: var(--gold) !important; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-gold" href="#">MOONSOON </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Story</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('assets/MOONSOON-BOTTLE-SHOT.png');"></div>
+            <div class="carousel-item" style="background-image: url('assets/MOONSOON-BOXES-SHOT.png');"></div>
+            <div class="carousel-item" style="background-image: url('assets/MOONSOON-BOTTLE-SHOT.png');"></div>
+        </div>
+        <div class="hero-overlay">
+            <h5 class="text-gold mb-3" style="letter-spacing: 5px;">MADE IN PAKISTAN</h5>
+            <h1 class="display-1 mb-4">MOONSOON</h1>
+            <p class="lead mb-5">Crafted with passion Inspired by nature.</p>
+            <a href="#products" class="btn btn-luxury">Explore Collection</a>
+        </div>
+    </div>
+
+    <section id="featured" class="bg-accent">
+        <div class="container text-center">
+            <h2 class="mb-5">Featured Scent</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img src="assets/NOIR-LABEL.png" alt="Noir Parfum" class="img-fluid border border-dark shadow-lg"> 
+                </div>
+                <div class="col-md-6 text-md-start">
+                    <h3 class="text-gold">NOIR For Him</h3>
+                    <p class="mb-4">A mysterious journey into the depth of the night. Noir is a bold, sophisticated blend for the man who leaves a lasting impression.</p>
+                    <a href="#" class="btn btn-luxury">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Our Collection</h2>
+                <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="card h-100 pb-4">
+                        <img src="assets/BLOOM-LABEL.png" class="card-img-top" alt="Bloom">
+                        <div class="card-body">
+                            <h5>BLOOM</h5>
+                            <p class="small mb-4">Feminine & Floral</p>
+                            <a href="#" class="btn btn-luxury">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 pb-4">
+                        <img src="assets/NOIR-LABEL.png" class="card-img-top" alt="Noir">
+                        <div class="card-body">
+                            <h5>NOIR</h5>
+                            <p class="small mb-4">Bold & Masculine</p>
+                            <a href="#" class="btn btn-luxury">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 pb-4">
+                        <img src="assets/AURA-LABEL.png" class="card-img-top" alt="Aura">
+                        <div class="card-body">
+                            <h5>AURA</h5>
+                            <p class="small mb-4">Universal Energy</p>
+                            <a href="#" class="btn btn-luxury">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-luxury" style="padding: 15px 50px;">Shop All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-accent">
+        <div class="container text-center py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="mb-4">Our Story</h2>
+                    <p class="lead text-gold">"Made with Love in Pakistan"</p>
+                    <p>Born from the vibrant culture of Pakistan and the precision of fine perfumery, Moonsoon is more than a brand—it is an olfactory signature. We use only the highest concentration of fragrance oils to ensure your scent lingers as long as your memories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2 class="mb-5">Inquiries</h2>
+                    <form>
+                        <input type="text" class="form-control mb-3 bg-transparent border-secondary text-white rounded-0" placeholder="Name">
+                        <input type="email" class="form-control mb-3 bg-transparent border-secondary text-white rounded-0" placeholder="Email">
+                        <button class="btn btn-luxury w-100">Connect with Us</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 bg-black border-top border-secondary text-center">
+        <p class="small mb-0">&copy; 2026 MOONSOON FRAGRANCE. Karachi, Pakistan.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
