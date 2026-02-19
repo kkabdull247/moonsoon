@@ -1,179 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOONSOON FRAGRANCE</title>
+    <title>MOONSOON | Haute Parfumerie & Luxe Apparel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@200;300;400;600&display=swap"
+        rel="stylesheet">
     <style>
-        :root { --gold: #c5a059; --dark: #0a0a0a; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--dark); color: #fff; scroll-behavior: smooth; }
-        h1, h2, .navbar-brand { font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 3px; }
-        
-        .navbar { background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 20px 0; }
-        .nav-link { color: #fff !important; font-weight: 300; margin: 0 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-        .nav-link:hover { color: var(--gold) !important; }
-
-        .hero-slider { position: relative; height: 100vh; width: 100%; overflow: hidden; }
-        .carousel-item { height: 100vh; background: no-repeat center center scroll; background-size: cover; }
-        .carousel-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); }
-
-        .hero-overlay {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 10; text-align: center; width: 100%;
+        :root {
+            --gold: #c5a059;
+            --dark-bg: #050505;
+            --card-bg: #0d0d0d;
+            --border: rgba(197, 160, 89, 0.2);
         }
 
-        /* Buttons & Cards */
-        .btn-luxury { border: 1px solid var(--gold); color: var(--gold); border-radius: 0; padding: 12px 35px; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; background: transparent; text-decoration: none; display: inline-block; }
-        .btn-luxury:hover { background: var(--gold); color: #000; }
-        
-        .card { background: #111; border: 1px solid #222; border-radius: 0; transition: 0.4s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .card-img-top { height: 350px; object-fit: cover; }
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-        section { padding: 100px 0; }
-        .bg-accent { background-color: #0f0f0f; }
-        
-        /* Visibility fix: Making sure text is white or gold, not gray */
-        p, .text-muted, li { color: #ffffff !important; } 
-        .text-gold { color: var(--gold) !important; }
+        /* --- Slimmed & Refined Header --- */
+        .navbar {
+            background: rgba(0, 0, 0, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            /* Reduced height */
+        }
+
+        .brand-logo-center {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--gold) !important;
+            font-size: 1.3rem;
+            /* Scaled down logo */
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 80vh;
+            /* Reduced height for better UX */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+                url('John.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* --- Buttons --- */
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 0;
+            padding: 12px 35px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            transition: 0.4s;
+        }
+
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 0;
+            padding: 12px 35px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-buy {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            letter-spacing: 8px;
+        }
+
+        /* --- Responsive Grid: 2 per row on Mobile --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+        }
+
+        /* --- Detailed Product Cards --- */
+        .luxury-card {
+            background: var(--card-bg);
+            border: 1px solid #1a1a1a;
+            padding: 15px;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .luxury-card:hover {
+            border-color: var(--gold);
+        }
+
+        .card-img-container {
+            height: 180px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+
+        @media (min-width: 768px) {
+            .card-img-container {
+                height: 280px;
+            }
+        }
+
+        .luxury-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        .luxury-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Card Text Detailing */
+        .card-title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .card-meta {
+            font-size: 0.55rem;
+            color: #777;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 10px;
+        }
+
+        /* --- Details & Specs --- */
+        .spec-list {
+            font-size: 0.6rem;
+            color: #888;
+            padding: 0;
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .spec-list li {
+            margin-bottom: 3px;
+            border-bottom: 1px solid #111;
+            padding-bottom: 2px;
+        }
+
+        .spec-list span {
+            color: var(--gold);
+            float: right;
+        }
+
+
+        /* --- Contact & Sections --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .map-container {
+            height: 350px;
+            border: 1px solid #222;
+            filter: grayscale(1) invert(1) opacity(0.6);
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+        }
+
+        /* --- Other Sections --- */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testi-card {
+            border-left: 1px solid var(--gold);
+            padding: 25px;
+            background: #0a0a0a;
+        }
+
+        .map-container {
+            height: 400px;
+            filter: grayscale(1) invert(1) opacity(0.5);
+            border: 1px solid #222;
+        }
+
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand text-gold" href="#">MOONSOON  </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index2.html">White theme</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Story</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container d-flex flex-column align-items-center">
+
+            <div class="d-flex w-100 align-items-center justify-content-between">
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon" style="width: 20px;"></span>
+                </button>
+
+                <div class="d-none d-lg-block" style="width: 40px;"></div>
+
+                <a class="brand-logo-center" href="#">MOONSOON</a>
+
+                <a href="#cart" class="nav-link p-0 text-white" style="width: 40px; text-align: right;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse w-100" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-center pt-2">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button"
+                            data-bs-toggle="dropdown">
+                            Collections
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark border-0 text-center">
+                            <li><a class="dropdown-item" href="#men">Men</a></li>
+                            <li><a class="dropdown-item" href="#women">Women</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item text-center"><a class="nav-link" href="#fragrance">Fragrances</a></li>
+                    <li class="nav-item text-center"><a class="nav-link" href="#clothing">Apparel</a></li>
+                    <li class="nav-item text-center"><a class="nav-link" href="#story">Our Story</a></li>
+                    <li class="nav-item text-center"><a class="nav-link" href="#contact">Voices</a></li>
+                    <!-- <li class="nav-item text-center"><a class="nav-link" href="#contact">Client Stories</a></li> -->
+                    <li class="nav-item text-center"><a class="nav-link" href="#contact">Concierge</a></li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div id="heroCarousel" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('MOONSOON-BOTTLE-SHOT.png');"></div>
-            <div class="carousel-item" style="background-image: url('MOONSOON-BOXES-SHOT.png');"></div>
-            <div class="carousel-item" style="background-image: url('MOONSOON-BOTTLE-SHOT.png');"></div>
-        </div>
-        <div class="hero-overlay">
-            <h5 class="text-gold mb-3" style="letter-spacing: 5px;">MADE IN PAKISTAN</h5>
-            <h1 class="display-1 mb-4">FRAGRANCE</h1>
-            <p class="lead mb-5">Crafted with passion Inspired by nature.</p>
-            <a href="#products" class="btn btn-luxury">Explore Collection</a>
-        </div>
-    </div>
-
-    <section id="featured" class="bg-accent">
-        <div class="container text-center">
-            <h2 class="mb-5">Featured Scent</h2>
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4">
-                    <img src="NOIR-LABEL.png" alt="Noir Parfum" class="img-fluid border border-dark shadow-lg"> 
-                </div>
-                <div class="col-md-6 text-md-start">
-                    <h3 class="text-gold">NOIR For Him</h3>
-                    <p class="mb-4">A mysterious journey into the depth of the night. Noir is a bold, sophisticated blend for the man who leaves a lasting impression.</p>
-                    <a href="#" class="btn btn-luxury">Buy Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products">
+    <section class="hero">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2>Our Collection</h2>
-                <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
-            </div>
-            <div class="row g-4 text-center">
-                <div class="col-md-4">
-                    <div class="card h-100 pb-4">
-                        <img src="BLOOM-LABEL.png" class="card-img-top" alt="Bloom">
-                        <div class="card-body">
-                            <h5>BLOOM</h5>
-                            <p class="small mb-4">Feminine & Floral</p>
-                            <a href="#" class="btn btn-luxury">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 pb-4">
-                        <img src="NOIR-LABEL.png" class="card-img-top" alt="Noir">
-                        <div class="card-body">
-                            <h5>NOIR</h5>
-                            <p class="small mb-4">Bold & Masculine</p>
-                            <a href="#" class="btn btn-luxury">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 pb-4">
-                        <img src="AURA-LABEL.png" class="card-img-top" alt="Aura">
-                        <div class="card-body">
-                            <h5>AURA</h5>
-                            <p class="small mb-4">Universal Energy</p>
-                            <a href="#" class="btn btn-luxury">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-luxury" style="padding: 15px 50px;">Shop All Products</a>
+            <h5 class="text-gold mb-2" style="letter-spacing: 5px; font-size: 0.7rem;">EST 2026</h5>
+            <h1>MOONSOON</h1>
+            <p class="small opacity-75 fw-light">Scent and Silk. The New Standard of Luxury.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#shop" class="btn btn-gold">Shop Fragrances</a>
+                <a href="#about" class="btn btn-outline-gold text-white">Our Story</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="bg-accent">
-        <div class="container text-center py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h2 class="mb-4">Our Story</h2>
-                    <p class="lead text-gold">"Made with Love in Pakistan"</p>
-                    <p>Born from the vibrant culture of Pakistan and the precision of fine perfumery, Moonsoon is more than a brand—it is an olfactory signature. We use only the highest concentration of fragrance oils to ensure your scent lingers as long as your memories.</p>
-                </div>
+    <section id="fragrance" class="py-5 container">
+        <div class="section-header">
+            <h2>SIGNATURE PARFUMS</h2>
+            <p class="small text-secondary">25% Extrait de Parfum Concentration</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="luxury-card">
+                <div class="card-img-container"><img src="NOIR.png" alt="Noir"></div>
+                <div class="card-title">NOIR SIGNATURE</div>
+                <div class="card-meta">Smoky Leather • Bergamot • Patchouli</div>
+                <ul class="spec-list">
+                    <li>Longevity <span>12+ Hours</span></li>
+                    <li>Sillage <span>Strong</span></li>
+                    <li>Type <span>Masculine/Bold</span></li>
+                </ul>
+                <div class="price">Rs. 8,500</div>
+                <button class="btn btn-buy mt-2">Add to Bag</button>
+            </div>
+
+            <div class="luxury-card">
+                <div class="card-img-container"><img src="Bloom2.png" alt="Bloom"></div>
+                <div class="card-title">BLOOM ESSENCE</div>
+                <div class="card-meta">Jasmine • Tuberose • White Musk</div>
+                <ul class="spec-list">
+                    <li>Longevity <span>8+ Hours</span></li>
+                    <li>Sillage <span>Moderate</span></li>
+                    <li>Type <span>Feminine/Floral</span></li>
+                </ul>
+                <div class="price">Rs. 7,800</div>
+                <button class="btn btn-buy mt-2">Add to Bag</button>
+            </div>
+
+            <div class="luxury-card">
+                <div class="card-img-container"><img src="AURA.png" alt="Aura"></div>
+                <div class="card-title">AURA PURE</div>
+                <div class="card-meta">Saffron • Amberwood • Cedar</div>
+                <ul class="spec-list">
+                    <li>Longevity <span>10+ Hours</span></li>
+                    <li>Sillage <span>Radiant</span></li>
+                    <li>Type <span>Unisex/Chic</span></li>
+                </ul>
+                <div class="price">Rs. 9,000</div>
+                <button class="btn btn-buy mt-2">Add to Bag</button>
+            </div>
+
+            <div class="luxury-card">
+                <div class="card-img-container"><img src="MOONSOON-BOTTLE-SHOT.png" alt="Oud"></div>
+                <div class="card-title">MIDNIGHT OUD</div>
+                <div class="card-meta">Cambodian Oud • Rose • Incense</div>
+                <ul class="spec-list">
+                    <li>Longevity <span>18+ Hours</span></li>
+                    <li>Sillage <span>Eternal</span></li>
+                    <li>Type <span>Oriental/Dark</span></li>
+                </ul>
+                <div class="price">Rs. 11,500</div>
+                <button class="btn btn-buy mt-2">Add to Bag</button>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="clothing" class="py-5 bg-black">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-5">Inquiries</h2>
-                    <form>
-                        <input type="text" class="form-control mb-3 bg-transparent border-secondary text-white rounded-0" placeholder="Name">
-                        <input type="email" class="form-control mb-3 bg-transparent border-secondary text-white rounded-0" placeholder="Email">
-                        <button class="btn btn-luxury w-100">Connect with Us</button>
-                    </form>
+            <div class="section-header">
+                <h2>THE APPAREL EDIT</h2>
+                <p class="small text-secondary">Premium Fabrics • Bespoke Tailoring</p>
+            </div>
+            <div class="product-grid">
+                <div class="luxury-card">
+                    <div class="card-img-container"><img
+                            src="collection2.png"
+                            alt="Menswear"></div>
+                    <div class="card-title">CASHMERE OVERCOAT</div>
+                    <div class="card-meta">Charcoal Grey • Slim Fit</div>
+                    <div class="price">Rs. 24,000</div>
+                    <button class="btn btn-buy mt-2">View Details</button>
+                </div>
+                <div class="luxury-card">
+                    <div class="card-img-container"><img
+                            src="Collection1.png"
+                            alt="Womenswear"></div>
+                    <div class="card-title">SILK BLAZER SUIT</div>
+                    <div class="card-meta">Midnight Black • Italian Silk</div>
+                    <div class="price">Rs. 19,500</div>
+                    <button class="btn btn-buy mt-2">View Details</button>
+                </div>
+                <div class="luxury-card">
+                    <div class="card-img-container"><img
+                            src="https://img.freepik.com/free-photo/photo-woman-looking-away-black-leather-jacket-cap_114579-59398.jpg?t=st=1771481253~exp=1771484853~hmac=8bd329f5cefa88d6c84cacc7bf643c9a5d02ee830a4011fb5cd988bb8348504a"
+                            alt="Menswear"></div>
+                    <div class="card-title">CASHMERE OVERCOAT</div>
+                    <div class="card-meta">Charcoal Grey • Slim Fit</div>
+                    <div class="price">Rs. 24,000</div>
+                    <button class="btn btn-buy mt-2">View Details</button>
+                </div>
+                <div class="luxury-card">
+                    <div class="card-img-container"><img
+                            src="https://img.freepik.com/free-photo/woman-black-sweater-shows-scary-face_140725-7573.jpg?t=st=1771481139~exp=1771484739~hmac=a7aab0915a7c5b7b65263a3324e5c26c8c213c435c7743527e3a6eb0be38cf19"
+                            alt="Womenswear"></div>
+                    <div class="card-title">SILK BLAZER SUIT</div>
+                    <div class="card-meta">Midnight Black • Italian Silk</div>
+                    <div class="price">Rs. 19,500</div>
+                    <button class="btn btn-buy mt-2">View Details</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-5 bg-black border-top border-secondary text-center">
-        <p class="small mb-0">&copy; 2026 MOONSOON FRAGRANCE. Karachi, Pakistan.</p>
+    <section id="story" class="container text-center">
+        <h2 class="section-title">OUR HERITAGE</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="fw-light opacity-75" style="line-height: 2;">Born in the heart of Pakistan, MOONSOON is a
+                    tribute to the intersection of ancient craftsmanship and modern luxury. Every scent is bottled with
+                    25% oil concentration, and every garment is stitched with precision, ensuring that our patrons don't
+                    just wear a product—they wear a legacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-black">
+        <div class="container">
+            <h2 class="section-title">THE INNER CIRCLE</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testi-card">
+                        <p class="small italic opacity-75">"Noir has become my signature. The depth of the leather notes
+                            is simply world-class."</p>
+                        <small class="text-gold">- Ahmed K.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testi-card">
+                        <p class="small italic opacity-75">"Rarely do you find this level of quality in local luxury
+                            brands. The packaging is elite."</p>
+                        <small class="text-gold">- Zoya M.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testi-card">
+                        <p class="small italic opacity-75">"The overcoat fits perfectly. You can feel the quality of the
+                            cashmere immediately."</p>
+                        <small class="text-gold">- Hamza T.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 container">
+        <div class="row g-5">
+            <div class="col-md-6">
+                <h2 class="mb-4">THE CONCIERGE</h2>
+                <p class="text-secondary">Signature Boutique, DHA Phase 6, Karachi.</p>
+                <p class="text-secondary">Email: concierge@moonsoon.pk<br>WhatsApp: +92 300 0000000</p>
+                <form class="mt-4">
+                    <input type="text" class="form-control bg-transparent border-secondary text-white rounded-0 mb-3"
+                        placeholder="Full Name">
+                    <textarea class="form-control bg-transparent border-secondary text-white rounded-0 mb-3"
+                        placeholder="Inquiry Details"></textarea>
+                    <button class="btn btn-outline-gold w-100 py-3">SEND MESSAGE</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115860.0384218844!2d67.0011364!3d24.842777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44ad55d3d4!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="brand-logo-center">MOONSOON</div>
+        <p class="small opacity-50 mt-3">© 2026 MOONSOON LUXURY GOODS | KARACHI</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-
-
-
